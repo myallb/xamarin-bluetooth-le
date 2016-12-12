@@ -60,7 +60,13 @@ namespace Plugin.BLE.Android
             handler = (sender, args) =>
             {
                 _gattCallback.ServicesDiscovered -= handler;
-                tcs.TrySetResult(_gatt.Services.Select(service => new Service(service, _gatt, _gattCallback, this)));
+
+				if (_gattCallback != null && _gatt != null)
+				{
+					tcs.TrySetResult(_gatt.Services.Select(service => new Service(service, _gatt, _gattCallback, this)));
+				}
+
+                //tcs.TrySetResult(_gatt.Services.Select(service => new Service(service, _gatt, _gattCallback, this)));
             };
 
             _gattCallback.ServicesDiscovered += handler;
@@ -77,6 +83,7 @@ namespace Plugin.BLE.Android
                 ClearServices();
 
                 _gatt.Disconnect();
+				//_gatt.Close();
             }
             else
             {

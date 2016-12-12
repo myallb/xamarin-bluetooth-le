@@ -31,7 +31,7 @@ namespace Plugin.BLE.iOS
             handler = (sender, args) =>
             {
                 _device.DiscoveredCharacteristic -= handler;
-                if (args.Error == null)
+				if (args.Error == null && _device != null && _service != null)
                 {
                     var characteristics = _service.Characteristics.Select(characteristic => new Characteristic(characteristic, _device, this));
                     tcs.TrySetResult(characteristics);

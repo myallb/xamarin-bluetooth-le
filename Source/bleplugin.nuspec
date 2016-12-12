@@ -1,0 +1,48 @@
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Plugin.BLE</id>
+    <version>1.1.10</version>
+    <title>BLE Plugin for Xamarin</title>
+    <authors>Adrian Seceleanu, Sven-Michael Stübe</authors>
+    <owners>Adrian Seceleanu, Sven-Michael Stübe</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/xabre/xamarin-bluetooth-le</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Xamarin plugin to access Bluetooth Low Energy functionality on Android and iOS.
+      Read the full documentation on the projects page.
+    </description>
+    <tags>xamarin monodroid Xamarin.iOS Bluetooth BLE LE Smart xamarin.forms ios android</tags>
+    <iconUrl>https://raw.githubusercontent.com/xabre/xamarin-bluetooth-le/master/icon_small.png</iconUrl>
+    <releaseNotes>
+      [1.1.0-beta2]
+      - #78 BluetoothStateChangedArgs contain the old state and the new state
+      - #81 iOS: Removed code smell which caused crash. Temporarily removed UpdateName subscription.
+      - Android 4.4: fixed gatt callback to correctly detect gatt error when connecting to known device and not in range
+      - #86: GetSystemConnectedDevices, beta implementation, in order to use the device in the app call ConnectAsync
+      - #73: fixed crash when calling connecttoknwondevice without cancellation token
+      [1.1.0-beta1]
+      - improvements on xml documentation
+      - Characteristic write type can be specified by the user
+      - ConnectAsync throws NullReferenceException if device is null
+      [1.0.0]
+      - stable release after major refactoring
+      - streamlined async API
+      [1.0.0-beta5]
+      - added indicate support for notifications
+    </releaseNotes>
+    <dependencies>
+      <group targetFramework="MonoAndroid0.0" />
+      <group targetFramework="Xamarin.iOS0.0" />
+      <group targetFramework=".NETPortable0.0-net45+win8+wpa81+wp8" />
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- PCL -->
+    <file src="Plugin.BLE/bin/Release/Plugin.BLE.*" target="lib/portable-net45+win8+wpa81+wp8" />
+    <!-- droid -->
+    <file src="Plugin.BLE.Android/bin/Release/Plugin.BLE.*" target="lib/MonoAndroid" />
+    <!-- iOS -->
+    <file src="Plugin.BLE.iOS/bin/Release/Plugin.BLE.*" target="lib/Xamarin.iOS10" />
+  </files>
+</package>
