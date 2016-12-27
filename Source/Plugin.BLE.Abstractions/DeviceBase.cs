@@ -29,7 +29,9 @@ namespace Plugin.BLE.Abstractions
         {
             if (!KnownServices.Any())
             {
-                KnownServices.AddRange(await GetServicesNativeAsync());
+				var servicelist = await GetServicesNativeAsync();
+				if(servicelist != null)
+					KnownServices.AddRange(servicelist);
             }
 
             return KnownServices;
